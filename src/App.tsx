@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import Box from "./components/Box";
 import Sphere from "./components/Sphere";
+import OfficialSphere from "./components/OfficialSphere";
 
 export default function App() {
   const [selectedShape, setSelectedShape] = useState("box");
@@ -35,6 +36,16 @@ export default function App() {
         </button>
         <button
           style={
+            selectedShape === "officialSphere"
+              ? { fontWeight: "bold" }
+              : { fontWeight: "normal" }
+          }
+          onClick={() => handleSelectShape("officialSphere")}
+        >
+          Official Sphere
+        </button>
+        <button
+          style={
             selectedShape === "box"
               ? { fontWeight: "bold" }
               : { fontWeight: "normal" }
@@ -46,6 +57,7 @@ export default function App() {
       </div>
       {selectedShape === "box" && <Box />}
       {selectedShape === "sphere" && <Sphere />}
+      {selectedShape === "officialSphere" && <OfficialSphere />}
     </>
   );
 }
